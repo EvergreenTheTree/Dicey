@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Doice"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://images/icon.svg"
+
+[display]
+
+window/size/viewport_width=648
+window/subwindows/embed_subwindows=false
+
+[physics]
+
+3d/physics_engine="GodotPhysics3D"
+3d/default_gravity=98.0
+3d/sleep_threshold_angular=0.5
+
+[rendering]
+
+renderer/rendering_method="mobile"
+anti_aliasing/quality/msaa_3d=1

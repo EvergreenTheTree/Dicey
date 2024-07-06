@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsr3jbymcogv4"]
+
+[ext_resource type="Script" path="res://ControlsUI.gd" id="1_jgqy5"]
+
+[node name="Window" type="Window"]
+size = Vector2i(200, 300)
+transient = true
+script = ExtResource("1_jgqy5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="d4_button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "d4"
+
+[node name="d6_button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "d6"
+
+[node name="d8_button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "d8"
+
+[node name="d10_button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "d10"
+
+[node name="d100_button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "d100"
+
+[node name="d12_button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "d12"
+
+[node name="d20_button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "d20"
+
+[node name="clear_button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Clear All"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

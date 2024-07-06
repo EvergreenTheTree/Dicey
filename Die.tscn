@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://sldehluo0ng7"]
+
+[ext_resource type="Script" path="res://Die.gd" id="1_y4k86"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ilc5i"]
+resource_name = "Plastic"
+friction = 0.21
+bounce = 0.22
+
+[node name="Die" type="RigidBody3D"]
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_ilc5i")
+inertia = Vector3(0.01, 0.01, 0.01)
+script = ExtResource("1_y4k86")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
