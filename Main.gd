@@ -13,7 +13,6 @@ func _init() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawn_die(Constants.DieType.D6)
 	var ui = ControlsUI.instantiate()
 	ui.title = "Controls"
 	ui.close_requested.connect(func(): get_tree().quit())

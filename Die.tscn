@@ -17,3 +17,4 @@ script = ExtResource("1_y4k86")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

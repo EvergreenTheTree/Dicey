@@ -98,21 +98,22 @@ func _process(delta):
 var last_linear_velocity: Vector3
 var last_angular_velocity: Vector3
 func _physics_process(delta: float) -> void:
-	last_linear_velocity = linear_velocity
-	last_angular_velocity = angular_velocity
-
-func _on_body_entered(body: Node) -> void:
+	var colliding_bodies = get_colliding_bodies()
 	var linear_jolt = last_linear_velocity.distance_to(linear_velocity)
 	var angular_jolt = last_angular_velocity.distance_to(angular_velocity)
 
-	if "physics_material_override" in body and body.physics_material_override != null:
-		var physics_material_name = body.physics_material_override.resource_name
-		if samples.has(physics_material_name):
-			$AudioStreamPlayer.stream = samples[physics_material_name]
+	for body in colliding_bodies:
+		if "physics_material_override" in body and body.physics_material_override != null:
+			var physics_material_name = body.physics_material_override.resource_name
+			if samples.has(physics_material_name):
+				$AudioStreamPlayer.stream = samples[physics_material_name]
 
-		if linear_jolt > 0.5:
-			$AudioStreamPlayer.volume_db = -40 + min(linear_jolt * 10, 40)
-			$AudioStreamPlayer.play()
-		if angular_jolt > 0.5:
-			$AudioStreamPlayer.volume_db = -40 + min(angular_jolt * 10, 40)
-			$AudioStreamPlayer.play()
+			if linear_jolt > 1:
+				$AudioStreamPlayer.volume_db = -45 + min(linear_jolt * 5, 40)
+				$AudioStreamPlayer.play()
+			if angular_jolt > 1:
+				$AudioStreamPlayer.volume_db = -45 + min(angular_jolt * 5, 40)
+				$AudioStreamPlayer.play()
+
+	last_linear_velocity = linear_velocity
+	last_angular_velocity = angular_velocity

@@ -4,15 +4,14 @@
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_b2434"]
 [ext_resource type="Texture2D" uid="uid://bungjs6i3kig0" path="res://images/wood_table_worn_diff_1k.jpg" id="3_ux4x8"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_yjs73"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c66pn"]
 resource_name = "Floor"
-friction = 0.49
-rough = true
+friction = 0.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mkbom"]
 points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_yjs73"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h5gy"]
 resource_name = "Material.001"
@@ -62,30 +61,76 @@ data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1,
 script = ExtResource("1_oamgs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(0.932273, -1.58128e-08, 0.361755, -0.361755, -4.0751e-08, 0.932273, 0, -1, -4.37114e-08, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 45, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.2405, 0)
+projection = 1
 current = true
 fov = 25.3
+size = 20.0
 script = ExtResource("2_b2434")
 sensitivity = 0.1
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Funnel" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 19.6228, 3.86619, 0, -3.86619, 19.6228, 3.45494, 7.25311, 28.9559)
 visible = false
+mesh = SubResource("PlaneMesh_yjs73")
+skeleton = NodePath("Floor")
+
+[node name="Floor" type="StaticBody3D" parent="Funnel"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_c66pn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Funnel/Floor"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_mkbom")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
+[node name="Funnel2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-07, 3.86619, -19.6228, 0, 19.6228, 3.86619, 20, 1.68997e-07, -8.57738e-07, -26.2085, 7.25311, 5.62531)
+visible = false
 mesh = SubResource("PlaneMesh_yjs73")
-skeleton = NodePath("../..")
+skeleton = NodePath("Floor")
+
+[node name="Floor" type="StaticBody3D" parent="Funnel2"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_c66pn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Funnel2/Floor"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_mkbom")
+
+[node name="Funnel3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-20, -3.37993e-07, 1.71548e-06, 0, 19.6228, 3.86619, -1.74846e-06, 3.86619, -19.6228, 1.16094, 7.25311, -28.88)
+visible = false
+mesh = SubResource("PlaneMesh_yjs73")
+skeleton = NodePath("Floor")
+
+[node name="Floor" type="StaticBody3D" parent="Funnel3"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_c66pn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Funnel3/Floor"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_mkbom")
+
+[node name="Funnel4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.62268e-06, -3.86619, 19.6228, 0, 19.6228, 3.86619, -20, -5.0699e-07, 2.57321e-06, 26.1656, 7.25311, 4.49295)
+visible = false
+mesh = SubResource("PlaneMesh_yjs73")
+skeleton = NodePath("Floor")
+
+[node name="Floor" type="StaticBody3D" parent="Funnel4"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_c66pn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Funnel4/Floor"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_mkbom")
 
 [node name="Tray" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 0.337, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(7, 0, 0, 0, 0.337, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("ArrayMesh_0wf4x")
 skeleton = NodePath("")
 

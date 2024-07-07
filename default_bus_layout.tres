@@ -1,0 +1,19 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dkxd6qe7lyvek"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_xhpxr"]
+resource_name = "Reverb"
+predelay_msec = 50.0
+predelay_feedback = 0.08
+room_size = 0.37
+damping = 0.0
+spread = 0.1
+wet = 0.05
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_d8h73"]
+resource_name = "Limiter"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_xhpxr")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectLimiter_d8h73")
+bus/0/effect/1/enabled = true
