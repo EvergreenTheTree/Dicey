@@ -38,7 +38,7 @@ func _ready():
 	var dice_meshes = dice_meshes_scene.instantiate()
 	match type:
 		Constants.DieType.D4:
-			mesh = dice_meshes.get_node("d4_infinity").mesh
+			mesh = dice_meshes.get_node("d4_alt_fixed").mesh
 		Constants.DieType.D6:
 			mesh = dice_meshes.get_node("d6").mesh
 		Constants.DieType.D8:
