@@ -1,11 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://nh80h6uqx5ru"]
+[gd_scene load_steps=2 format=3 uid="uid://b23f580i5hvca"]
 
-[ext_resource type="PackedScene" uid="uid://p6ut3jpqsxo6" path="res://models/dice.blend" id="1_kl3g3"]
+[ext_resource type="PackedScene" uid="uid://ksefi44kcoxe" path="res://models/dice.glb" id="1_v5pu8"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ei2wv"]
-resource_name = "Wood"
-
-[node name="dice" instance=ExtResource("1_kl3g3")]
-
-[node name="StaticBody3D" parent="Tray" index="0"]
-physics_material_override = SubResource("PhysicsMaterial_ei2wv")
+[node name="dice2" instance=ExtResource("1_v5pu8")]

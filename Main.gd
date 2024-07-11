@@ -53,6 +53,20 @@ func spawn_die(type: Constants.DieType) -> void:
 	dice.append(instance)
 	add_child(instance)
 	instance.right_click.connect(_on_right_click)
+	instance.result.connect(_on_result)
+
+func reroll(die: Die):
+	spawn_die(die.type)
+	var i = dice.find(die)
+	if i != -1:
+		dice.remove_at(i)
+	die.queue_free()
+
+func _on_result(die: Die, result: int):
+	if result != -1:
+		print(result)
+	else:
+		reroll(die)
 
 func _on_right_click(die: Die):
 	var right_click_menu = RightClickMenu.instantiate()
@@ -62,11 +76,7 @@ func _on_right_click(die: Die):
 	print(get_viewport().get_visible_rect())
 	right_click_menu.set_global_position(get_viewport().get_mouse_position())
 	right_click_menu.find_child("reroll_button").pressed.connect(func ():
-		spawn_die(die.type)
-		var i = dice.find(die)
-		if i != -1:
-			dice.remove_at(i)
-		die.queue_free()
+		reroll(die)
 		right_click_menu.queue_free()
 	)
 	right_click_menu.find_child("delete_button").pressed.connect(func ():

@@ -21,6 +21,10 @@ window/size/viewport_width=648
 window/size/borderless=true
 window/subwindows/embed_subwindows=false
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gltf_custom_attributes/plugin.cfg")
+
 [physics]
 
 3d/physics_engine="GodotPhysics3D"
